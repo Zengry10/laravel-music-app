@@ -55,7 +55,7 @@ const isOpen = ref(false)
                     </div>
 
                 </Link>
-            </div> 
+            </div>  
             <Modal
                 :show = isOpen
                 title="Création d'une musique"
