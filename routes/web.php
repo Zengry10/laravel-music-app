@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +16,10 @@ use Inertia\Inertia;
 */
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TrackController;
+
+Route::get('/tracks', [TrackController::class, 'getTracks'])->name('tracks.index');
+Route::get('/tracks/create', [TrackController::class, 'create'])->name('tracks.create');
 
 
 Route::get('/', function () {

@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('tracks', function (Blueprint $table) {
             $table->id();
+            $table->string('uuid')->unique();
+            $table->string('title');
+            $table->string('artist');
+            $table->string('image');
+            $table->string('music');
+            $table->boolean('display')->default(true);
+            $table->integer('play_count')->default(0);
             $table->timestamps();
+
         });
     }
 

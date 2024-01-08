@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Track extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'uuid',
+        'title',
+        'artist',
+        'image',
+        'music',
+        'display',
+        'play_count',
+    ];
 }
