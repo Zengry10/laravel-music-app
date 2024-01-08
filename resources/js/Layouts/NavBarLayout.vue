@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <nav class="bg-gray-800">
+    <nav class="bg-gray-800 w-full">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -36,7 +36,12 @@
                 <div class="hidden sm:ml-6 sm:block">
                 <div class="flex space-x-4">
                     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                    <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a>
+                    <Link 
+                        class=" text-white rounded-md px-3 py-2 text-sm font-medium"
+                        :href="route('tracks.index')"
+                    >
+                        Coups de coeurs
+                    </Link>
                     <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Team</a>
                     <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Projects</a>
                     <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Calendar</a>
@@ -87,8 +92,8 @@
         </div>
     </nav>
 
-    <div class="px-16">
-        <div class="flex justify-between items-center">
+    <div class="px-16 bg-black">
+        <div class="flex justify-between items-center ">
             <h4 class="text-4xl font-bold my-8">
                 <slot name="title"></slot>
             </h4>

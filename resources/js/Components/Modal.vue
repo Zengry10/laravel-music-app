@@ -2,6 +2,10 @@
 import { computed, onMounted, onUnmounted, watch } from 'vue';
 
 const props = defineProps({
+    title: {
+        type: String,
+        default: '',
+    },
     show: {
         type: Boolean,
         default: false,
@@ -81,11 +85,24 @@ const maxWidthClass = computed(() => {
                     leave-from-class="opacity-100 translate-y-0 sm:scale-100"
                     leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 >
-                    <div v-show="show" class="mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto" :class="maxWidthClass">
+                    <div v-show="show" class="mb-6 p-4 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto" :class="maxWidthClass">
+                        <h1 class="title-props">{{title}}</h1>
+                        
+
                         <slot v-if="show" />
+
+                     
                     </div>
                 </transition>
             </div>
         </transition>
     </teleport>
 </template>
+
+<style>
+
+.title-props {
+    font-size: 22px;
+    margin: 10px 0px;
+}
+</style>

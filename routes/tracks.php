@@ -18,28 +18,7 @@ use Illuminate\Foundation\Application;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TrackController;
 
+Route::get('/tracks', [TrackController::class, 'getTracks'])->name('tracks.index');
+Route::get('/tracks/{id}', [TrackController::class, 'getTrackDetails'])->name('tracks.show');
 
-
-
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
-
-Route::get('/user', [HomeController::class, 'index']);
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
-});
-
-
+Route::get('/tracks/create', [TrackController::class, 'createTrack'])->name('tracks.store');

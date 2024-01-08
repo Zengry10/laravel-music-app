@@ -35,6 +35,10 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+
+            // Ajoutez cette ligne pour inclure les routes du fichier track.php
+            Route::middleware('web')
+                ->group(base_path('routes/tracks.php'));
         });
     }
 }
