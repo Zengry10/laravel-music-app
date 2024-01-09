@@ -4,6 +4,9 @@ import NavBarLayout from '@/Layouts/NavBarLayout.vue'
 import { Link } from '@inertiajs/vue3'
 import Modal from '@/Components/Modal.vue';
 import Button from '@/Components/Button.vue';
+import { useForm } from '@inertiajs/vue3'
+
+
 
 // import ref from 'vue'
 
@@ -11,10 +14,24 @@ const props = defineProps({
     tracks: Array
 });
 
+
 onMounted(() => {
     console.log(props.tracks);
 
 });
+
+const submitFormCreate = () => {
+    form.post(route('track.store'))
+};
+
+const form = useForm({
+  title: '',
+  artist: '',
+  image: '',
+  music: '',
+  display: null,
+})
+
 
 const isOpen = ref(false)
 
@@ -63,24 +80,90 @@ const isOpen = ref(false)
 
             <form>
                 <div class="mb-4">
-                    <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Titre</label>
-                    <input type="text" id="title" name="title" class="w-full border rounded-md p-2">
+                    <label 
+                        for="title" 
+                        class="block text-gray-700 text-sm font-bold mb-2"
+                    >
+                        Titre
+                    </label>
+                    
+                    <input 
+                        v-model="form.title"
+                        type="text" 
+                        id="title" 
+                        name="title" 
+                        class="w-full border rounded-md p-2"
+                    >
                 </div>
 
                 <div class="mb-4">
-                    <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Artiste</label>
-                    <input type="text" id="title" name="title" class="w-full border rounded-md p-2">
+                    <label 
+                        for="title" 
+                        class="block text-gray-700 text-sm font-bold mb-2"
+                    >
+                        Artiste
+                    </label>
+                    <input 
+                        v-model="form.artist"
+                        type="text" 
+                        id="artist" 
+                        name="artist" 
+                        class="w-full border rounded-md p-2"
+                    >
                 </div>
 
                 <div class="mb-4">
-                    <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Titre</label>
-                    <input type="text" id="title" name="title" class="w-full border rounded-md p-2">
+                    <label 
+                        for="image" 
+                        class="block text-gray-700 text-sm font-bold mb-2"
+                    >
+                        Image
+                    </label>
+                    <input 
+                        @input="form.image = $event.target.files[0]"
+                        type="file" 
+                        id="image" 
+                        name="image" 
+                        class="w-full border rounded-md p-2"
+                    >
                 </div>
 
                 <div class="mb-4">
-                    <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Titre</label>
-                    <input type="text" id="title" name="title" class="w-full border rounded-md p-2">
+                    <label 
+                        for="music" 
+                        class="block text-gray-700 text-sm font-bold mb-2"
+                    >
+                        Music
+                    </label>
+                    <input 
+                        @input="form.music = $event.target.files[0]"
+                        type="file" 
+                        id="music" 
+                        name="music" 
+                        class="w-full border rounded-md p-2"
+                    >
                 </div>
+
+                <div class="mb-4">
+                    <label 
+                        for="display" 
+                        class="block text-gray-700 text-sm font-bold mb-2"
+                    >
+                        Afficher
+                    </label>
+                    <select
+                        v-model="form.display"
+                        name="display" 
+                        id=""
+                    >
+                        <option :value="true">Oui</option>
+                        <option :value="false">Non</option>
+                    </select>
+                </div>
+
+                <div v-if="successMessage" class="text-green-500">{{ successMessage }}</div>
+
+
 
                 <div class="container-button-all">
                     <Button
@@ -89,7 +172,9 @@ const isOpen = ref(false)
                         textColor="#FC8989"
                         backgroundColor="#FEDEDE"
                     />
-                    <Button/>
+                    <Button
+                        @click="submitFormCreate"
+                    />
 
                 </div>
             </form>

@@ -21,4 +21,4 @@ use App\Http\Controllers\TrackController;
 Route::get('/tracks', [TrackController::class, 'getTracks'])->name('tracks.index');
 Route::get('/tracks/{id}', [TrackController::class, 'getTrackDetails'])->name('tracks.show');
 
-Route::get('/tracks/create', [TrackController::class, 'createTrack'])->name('tracks.store');
+Route::post('/tracks', [TrackController::class, 'createTrack'])->name('track.store');
