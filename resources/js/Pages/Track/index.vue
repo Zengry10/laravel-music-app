@@ -151,7 +151,7 @@ onMounted(() => {
                     <div
                         @mouseover="track.isHover = true"
                         @mouseleave="track.isHover = false"
-                        @click="track.isMusicPlaying = !track?.isMusicPlaying && playMusic(track)"
+                        @click="track.isMusicPlaying = !track?.isMusicPlaying; playMusic(track)"
                         :style="{ backgroundImage: track?.image !== '' ? `url('/storage/${track.image}')` : 'url(https://avisdupublic.net/wp-content/uploads/2015/10/pnl-le-monde-chico.jpg)' }"
                         class="container-track__image"
                     >
