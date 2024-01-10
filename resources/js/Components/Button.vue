@@ -36,6 +36,7 @@ const props = defineProps({
     color: v-bind(textColor);
     padding: 5px 10px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 </style>

@@ -58,5 +58,47 @@ class TrackController extends Controller
         return Inertia::render('Track/DetailsTrack', ['track' => $track]);
     }
 
+    public function destroy($uuid)
+    {
+        $track = Track::where('uuid', $uuid)->firstOrFail();
+
+        $track->delete();
+
+        return redirect()->route('tracks.index', [
+            'response' => 'success'
+        ]);
+    }
+
+    public function edit($uuid)
+    {
+
+        $track = Track::where('uuid', $uuid)->firstOrFail();
+
+        return Inertia::render('Track/Edit', ['track' => $track]);
+
+    }
+
+    public function update(Request $request, $uuid)
+    {
+        $request->validate([
+            'title' => ['string', 'required', 'max:255'],
+            'artist' => ['string', 'required', 'max:255'],
+            'display' => ['boolean', 'required'],
+        ]);
+
+        $track = Track::where('uuid', $uuid)->firstOrFail();
+
+        $track->update([
+            'title' => $request->title,
+            'artist' => $request->artist,
+            'display' => $request->display,
+        ]);
+
+        return redirect()->route('tracks.index', [
+            'uuid' => $uuid,
+            'response' => 'success'
+        ]);
+    }
+
 
 }

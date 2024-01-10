@@ -22,3 +22,6 @@ Route::get('/tracks', [TrackController::class, 'getTracks'])->name('tracks.index
 Route::get('/tracks/{id}', [TrackController::class, 'getTrackDetails'])->name('tracks.show');
 
 Route::post('/tracks', [TrackController::class, 'createTrack'])->name('track.store');
+Route::delete('/tracks/{uuid}', [TrackController::class, 'destroy'])->name('track.destroy');
+Route::get('/tracks/{uuid}/edit', [TrackController::class, 'edit'])->name('track.edit');
+Route::put('/tracks/{uuid}', [TrackController::class, 'update'])->name('track.update');
