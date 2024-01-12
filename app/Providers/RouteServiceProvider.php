@@ -39,6 +39,9 @@ class RouteServiceProvider extends ServiceProvider
             // Ajoutez cette ligne pour inclure les routes du fichier track.php
             Route::middleware('web')
                 ->group(base_path('routes/tracks.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes/playlist.php'));
         });
     }
 }

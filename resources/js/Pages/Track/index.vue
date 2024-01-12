@@ -86,7 +86,7 @@ onMounted(() => {
     <NavBarLayout>
 
         <template #title>
-            <p>Mes musiques </p>
+            <p style="color: white;">Mes musiques </p>
         </template>
             
 
